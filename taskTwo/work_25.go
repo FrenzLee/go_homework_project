@@ -50,7 +50,6 @@ func Increment() {
 		go func() {
 			for j := 0; j < 1000; j++ {
 				atomic.AddInt64(&counter, 1)
-				fmt.Println("添加")
 			}
 		}()
 	}
