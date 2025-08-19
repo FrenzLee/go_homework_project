@@ -3,6 +3,9 @@ package main
 import (
 	"fmt"
 	"go_homework_project/taskOne"
+	"go_homework_project/taskThree"
+	"go_homework_project/taskThree/config"
+	"go_homework_project/taskThree/repository"
 	"go_homework_project/taskTwo"
 )
 
@@ -118,10 +121,100 @@ func taskTwoTest() {
 	taskTwo.Increment()
 }
 
+func taskThreeTest() {
+	//初始化数据库
+	cfg, err := config.LoadConfig()
+	if err != nil {
+		panic(err)
+	}
+
+	//gorm.DB
+	if err := repository.InitDB(&cfg); err != nil {
+		panic(err)
+	}
+
+	//Sqlx.DB
+	if err := repository.InitDB_Sqlx(&cfg); err != nil {
+		panic(err)
+	}
+
+	//taskThree.CreateStudent()
+	//taskThree.GetAgeOver18()
+	//taskThree.UpdateGrand("张三", "四年级")
+	//taskThree.DeleteAgeSmall15()
+
+	//转账
+	/*
+		if err := taskThree.TxTransfer("B", "A", 100); err != nil {
+			fmt.Println("转账失败：", err)
+		} else {
+			fmt.Println("转账成功")
+		}
+	*/
+
+	//使用Sqlx查询 employees 表中所有部门为 "技术部" 的员工信息
+	/*employees := taskThree.GetEmpByDept("技术部")
+	for i := range employees {
+		fmt.Println("技术部员工信息：", employees[i].ID, employees[i].Name, employees[i].Department, employees[i].Salary)
+	}*/
+
+	//使用Sqlx查询 employees 表中工资最高的员工信息
+	/*employee := taskThree.GetHighestSalary()
+	fmt.Println("工资最高的员工信息：", employee.ID, employee.Name, employee.Department, employee.Salary)
+	*/
+
+	//查询价格大于 50 元的书籍
+	/*books := taskThree.GetBookByPriceOver(50)
+	for i := range books {
+		fmt.Println("价格大于50的书籍信息是：", books[i].ID, books[i].Title, books[i].Author, books[i].Price)
+	}*/
+
+	//查询某个用户发布的所有文章及其对应的评论信息
+	//taskThree.GetAllInfoByUserName("作者3")
+
+	//查询评论数量最多的文章信息
+	/*hottestPosts := taskThree.GetHottestPostInfo()
+	for i := range hottestPosts {
+		fmt.Printf("评论最多的文章id：%d，文章名称：%s，作者：%s，评论数量：%d \n",
+			hottestPosts[i].ID, hottestPosts[i].Title, hottestPosts[i].Author, hottestPosts[i].CommentNum)
+	}*/
+
+	//为 Post 模型添加一个钩子函数，在文章创建时自动更新用户的文章数量统计字段。
+	/*posts := []taskThree.Post{
+		{Title: "作者1的第四篇文章", Content: "思思上", UserID: 27},
+		{Title: "作者1的第五篇文章", Content: "舞舞舞", UserID: 27},
+	}
+	taskThree.AddPost(posts)*/
+
+	/*newUsers := []taskThree.User{
+		{Name: "作者4",
+			Posts: []taskThree.Post{
+				{Title: "作者4的第一篇文章", Content: "思乡"},
+				{Title: "作者4的第二篇文章", Content: "晓"},
+			}},
+		{Name: "作者5",
+			Posts: []taskThree.Post{
+				{Title: "作者5的第一篇文章", Content: "咏楼"},
+			}},
+	}
+	taskThree.AddUserAndPost(newUsers)*/
+
+	//为 Comment 模型添加一个钩子函数，在评论删除时检查文章的评论数量，如果评论数量为 0，则更新文章的评论状态为 "无评论"。
+	taskThree.DeleteCommentsById([]uint{25, 27})
+
+}
+
 func main() {
 
 	//taskOneTest()
 
-	taskTwoTest()
+	//taskTwoTest()
+
+	taskThreeTest()
+	//taskThree.InitTable()
+	//taskThree.InitData()
+	//taskThree.InitDataBySqlx()
+	//taskThree.InitDataBySqlx1()
+	//taskThree.InitDataBlog()
 
 }
