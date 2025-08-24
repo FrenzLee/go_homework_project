@@ -1,4 +1,4 @@
-package taskOne
+package task_01
 
 /*
 66. 加一

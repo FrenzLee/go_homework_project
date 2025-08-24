@@ -1,8 +1,8 @@
-package taskThree
+package task_03
 
 import (
 	"fmt"
-	"go_homework_project/taskThree/repository"
+	"go_homework_project/task_03/repository"
 	"strconv"
 
 	"gorm.io/gorm"

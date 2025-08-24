@@ -2,7 +2,7 @@ package repository
 
 import (
 	"fmt"
-	"go_homework_project/taskThree/config"
+	"go_homework_project/task_03/config"
 
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/jmoiron/sqlx"

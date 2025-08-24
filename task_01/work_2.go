@@ -1,4 +1,4 @@
-package taskOne
+package task_01
 
 /*
 9. 回文数

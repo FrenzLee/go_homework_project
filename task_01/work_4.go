@@ -1,4 +1,4 @@
-package taskOne
+package task_01
 
 /*
 14. 最长公共前缀

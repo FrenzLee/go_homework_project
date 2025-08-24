@@ -1,9 +1,9 @@
-package taskThree
+package task_03
 
 import (
 	"errors"
 	"fmt"
-	"go_homework_project/taskThree/repository"
+	"go_homework_project/task_03/repository"
 )
 
 func CreateStudent() {
